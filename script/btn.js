@@ -1,9 +1,29 @@
 
+
+
+
+
+
+
 function loadCategories() {
   fetch('https://openapi.programming-hero.com/api/phero-tube/categories')
     .then(res => res.json())
     .then(data => displayCategories(data.categories))
 }
+
+// load videos function 
+
+
+function loadVideos() {
+  fetch('https://openapi.programming-hero.com/api/phero-tube/videos')
+    .then(response => response.json())
+    .then(data => displayVideos(data.videos))
+
+}
+
+
+
+
 
 // {category_id: '1001', category: 'Music'}
 
@@ -21,24 +41,15 @@ function displayCategories(categories) {
 }
 
 
-loadCategories()
 
 
-// load videos function 
 
 
-function loadVideos() {
-  fetch('https://openapi.programming-hero.com/api/phero-tube/videos')
-    .then(response => response.json())
-    .then(data => displayVideos(data.videos))
 
-}
-
-
-const displayVideos = (video) => {
+const displayVideos = (videos) => {
   // console.log(video)
 
-  video.forEach(video => {
+  videos.forEach(video => {
     console.log(video)
     const videoContainer = document.getElementById('video-container');
 
@@ -64,9 +75,8 @@ const displayVideos = (video) => {
           </div>
           <div class="information">
             <h2 class="text-base font-bold">${video.title}</h2>
-            <h1 class="text-xs text-gray-400 flex gap-1 pt-2">${video.authors[0].profile_name
-                } <img class="w-5 h-5" src="https://img.icons8.com/?size=64&id=2AuMnRFVB9b1&format=png" alt=""></h1>
-             <h3 class="text-xs text-gray-400 "> ${video.others.views}views</h3>
+            <h1 class="text-xs text-gray-400 flex gap-1 pt-2">Awlad Hossain <img class="w-5 h-5" src="https://img.icons8.com/?size=64&id=2AuMnRFVB9b1&format=png" alt=""></h1>
+            <h3 class="text-xs text-gray-400 ">91K views</h3>
           </div>
          
         </div>
@@ -79,7 +89,10 @@ const displayVideos = (video) => {
 
 }
 
+
+loadCategories()
 loadVideos()
+
 
 
 
