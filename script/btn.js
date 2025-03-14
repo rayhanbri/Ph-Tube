@@ -22,6 +22,16 @@ function loadVideos() {
 }
 
 
+function loadCategoryVideos (id){
+  const url  = `https://openapi.programming-hero.com/api/phero-tube/category/${id}`
+  
+  fetch(url)
+  .then(response => response.json())
+  .then (data => displayVideos(data.category
+  ))
+}
+
+
 
 
 
@@ -34,7 +44,7 @@ function displayCategories(categories) {
   for (let cat of categories) {
     const containerDiv = document.createElement('div');
     containerDiv.innerHTML = `
-  <button class="btn btn-sm hover:bg-[#FF1F3D] hover:text-white">${cat.category}</button>
+  <button onclick="loadCategoryVideos(${cat.category_id})" class="btn btn-sm hover:bg-[#FF1F3D] hover:text-white">${cat.category}</button>
   `;
     categroyContainer.append(containerDiv);
   }
@@ -47,11 +57,14 @@ function displayCategories(categories) {
 
 
 const displayVideos = (videos) => {
+
+  const videoContainer = document.getElementById('video-container');
+  videoContainer.innerHTML = "";
   // console.log(video)
 
   videos.forEach(video => {
-    console.log(video)
-    const videoContainer = document.getElementById('video-container');
+    // console.log(video)
+    
 
     const videoCard = document.createElement('div');
     videoCard.innerHTML = `
@@ -91,11 +104,13 @@ const displayVideos = (videos) => {
 
 
 loadCategories()
-loadVideos()
 
 
 
 
+
+// "category_id": "1001",
+//       "category": "Music"
 
 // {category_id: '1001', video_id: 'aaal', thumbnail: 'https://i.ibb.co/hdtZYbB/enchnting.jpg', title: 'Enchanted Harmonies', authors: Array(1), …}
 // authors
