@@ -55,11 +55,33 @@ const loadVideoDetails =(videoId)=>{
   fetch(url)
   .then (response => response.json())
   .then (data => displayvideoDetails(data.video))
+
   console.log(url);
+
 }
 
 const displayvideoDetails = (video) => {
   console.log(video);
+  document.getElementById('video_details').showModal();
+
+  const videoDetails = document.getElementById('video-details')
+  videoDetails.innerHTML=`
+  <div class="card bg-base-100 image-full  shadow-sm">
+  <figure>
+    <img
+      src="${video.thumbnail}"
+      alt="Shoes" />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">Card Title</h2>
+    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+    <div class="card-actions justify-end">
+      
+    </div>
+  </div>
+</div>
+  `
+
 }
 
 
