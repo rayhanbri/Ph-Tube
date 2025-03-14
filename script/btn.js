@@ -27,8 +27,12 @@ function loadCategoryVideos (id){
   
   fetch(url)
   .then(response => response.json())
-  .then (data => displayVideos(data.category
-  ))
+  .then (data => {
+    const cilckedButton = document.getElementById(`btn-${id}`)
+    cilckedButton.classList.add('active');
+    console.log(cilckedButton)
+    displayVideos(data.category)
+  })
 }
 
 
@@ -42,9 +46,10 @@ function displayCategories(categories) {
 
 
   for (let cat of categories) {
+    // console.log(cat);
     const containerDiv = document.createElement('div');
     containerDiv.innerHTML = `
-  <button onclick="loadCategoryVideos(${cat.category_id})" class="btn btn-sm hover:bg-[#FF1F3D] hover:text-white">${cat.category}</button>
+  <button id="btn-${cat.category_id}" onclick="loadCategoryVideos(${cat.category_id})" class="btn btn-sm hover:bg-[#FF1F3D] hover:text-white">${cat.category}</button>
   `;
     categroyContainer.append(containerDiv);
   }
