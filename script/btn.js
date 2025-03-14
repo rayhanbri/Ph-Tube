@@ -6,7 +6,7 @@ function removeActiveClass(){
   for(let btn of activeButton){
     btn.classList.remove('active');
   }
-  console.log(activeButton)
+  // console.log(activeButton)
 }
 
 
@@ -43,11 +43,24 @@ function loadCategoryVideos (id){
    removeActiveClass();
     const cilckedButton = document.getElementById(`btn-${id}`)
     cilckedButton.classList.add('active');
-    console.log(cilckedButton)
+    // console.log(cilckedButton)
     displayVideos(data.category)
   })
 }
 
+const loadVideoDetails =(videoId)=>{
+ 
+  const url = `https://openapi.programming-hero.com/api/phero-tube/video/${videoId}`
+
+  fetch(url)
+  .then (response => response.json())
+  .then (data => displayvideoDetails(data.video))
+  console.log(url);
+}
+
+const displayvideoDetails = (video) => {
+  console.log(video);
+}
 
 
 
@@ -121,6 +134,7 @@ const displayVideos = (videos) => {
           </div>
          
         </div>
+        <button onclick="loadVideoDetails('${video.video_id}')" class="btn btn-block">Show Details</button>
       </div>
     `
     videoContainer.append(videoCard);
