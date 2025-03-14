@@ -60,6 +60,16 @@ const displayVideos = (videos) => {
 
   const videoContainer = document.getElementById('video-container');
   videoContainer.innerHTML = "";
+
+  if(videos.length == 0 ){
+    videoContainer.innerHTML = `
+    <div class="col-span-4 flex flex-col justify-center items-center  ">
+      <img class="w-[120px] " src="asset/Icon.png" alt="">
+      <h1 class="text-3xl font-bold text-center w-[433px]">Oops!! Sorry, There is no content here</h1> 
+     </div>
+     `;
+     return;
+  }  
   // console.log(video)
 
   videos.forEach(video => {
