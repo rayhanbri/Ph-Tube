@@ -21,8 +21,8 @@ function loadCategories() {
 // load videos function 
 
 
-function loadVideos() {
-  fetch('https://openapi.programming-hero.com/api/phero-tube/videos')
+function loadVideos(search = '') {
+  fetch(`https://openapi.programming-hero.com/api/phero-tube/videos?title=${search}`)
     .then(response => response.json())
     .then(data => {
       // this is for all button 
@@ -169,7 +169,10 @@ const displayVideos = (videos) => {
 
 }
 
-
+document.getElementById('input-field').addEventListener('keyup',(e)=>{
+  const input = e.target.value;
+  loadVideos(input)
+})
 loadCategories()
 
 
