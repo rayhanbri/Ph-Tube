@@ -151,8 +151,11 @@ const displayVideos = (videos) => {
           </div>
           <div class="information">
             <h2 class="text-base font-bold">${video.title}</h2>
-            <h1 class="text-xs text-gray-400 flex gap-1 pt-2">Awlad Hossain <img class="w-5 h-5" src="https://img.icons8.com/?size=64&id=2AuMnRFVB9b1&format=png" alt=""></h1>
-            <h3 class="text-xs text-gray-400 ">91K views</h3>
+            <h1 class="text-xs text-gray-400 flex gap-1 pt-2">${video.authors[0].profile_name}
+            ${video.authors[0].verified == true?     `<img class="w-5 h-5" src="https://img.icons8.com/?size=64&id=2AuMnRFVB9b1&format=png" alt=""></h1>
+              <h3 class="text-xs text-gray-400 ">91K views</h3>` : ``
+            }
+             
           </div>
          
         </div>
@@ -218,3 +221,5 @@ loadCategories()
 // [[Prototype]]
 // :
 // Object
+
+
